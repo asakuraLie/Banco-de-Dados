@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br/>
+
+<h1>Avaliações de </h1>{{ avaliacao.avaliador }}
+<br/>
+
+<ul class="list-group">
+{% for avaliacao in avaliacoes %}
+    <li class="list-group-item"><a href="{% url 'avaliacoes-detalhes' avaliacao.pk %}" class="btn btn-secondary">{{ avaliacao.titulo }}</a><br/>
+        <hr>
+        <h6>Filme: {{ avaliacao.filme_avaliado }} <br/>
+        <h6>Nota: {{ avaliacao.nota }}<br/></h6>
+        <h6>Avaliado por: {{ avaliacao.avaliador }}<br/></h6>
+        {{ avaliacao.comentario | slice:":150" }}
+    </li>
+    <br/>
+{% endfor %}
+</ul>
+
+<br/>
+
+<a href="{% url 'filmes-disponiveis' %}" class="btn btn-secondary" >Lista de Filmes</a>
+<a href="{% url 'adc_avaliacao' %}" class="btn btn-secondary" >Adicionar Avaliação</a>
+
+{% endblock %}

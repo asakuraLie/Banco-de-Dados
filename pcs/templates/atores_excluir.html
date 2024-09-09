@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Excluir Ator/Atriz{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<br/>
+<h1>Excluir Ator/Atriz</h1>
+<br/>
+<div class="mb-3">
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-secondary">Excluir</button>
+</div>
+
+{% else %}
+
+Você precisa estar loggado para fazer isso :)
+
+{% endif %}
+
+
+{% endblock %}

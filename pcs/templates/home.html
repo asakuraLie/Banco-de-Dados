@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5 border border-1 border-dark">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="rounded p-2 mb-3 bg-AzulClaro">
+                <h2> Adicionado recentemente na PoliFlix: SisProg Wars: A volta da MVN</h2>
+                <h5> Sinopse</h5>
+                <p> Em uma galáxia distante, o jedi RR desenvolve uma nova maneira de liderar os rebeldes para combater o Império. Disposto de um monitor MVN, os heróis resolvem criar um Compilador de C-- para solucionar problemas de criptografia dos vilões. </p>
+            </div>
+            <div class="rounded p-2 mb-3 bg-AzulClaro">
+                <h2> "Possani volta a dar aulas na Poli", uma ficção real</h2>
+                <h5> Sinopse </h5>
+                <p> Informações quentes mostram que ele tem intenções de dar aulas de Cálculo V. Provavelmente os alunos já deverão fazer a lista</p>
+            </div>
+            <div class="rounded p-2 mb-3 bg-AzulClaro">
+                <h2> Em filme, atores Midorikawa e Arakaki conseguem criar modelos de Machine Learning em uma FPGA</h2>
+                <h5> Sinopse </h5>
+                <p> Dispostos de uma simples DE0-CV, os professores conseguiram criar um modelo de rede neural com máquinas de estados.
+                </br>"A maior dificuldade foi fazer o relatório no final", diz Arakaki ao ser questionado sobre sua metodologia. </p>
+            </div>
+
+        </div>
+        <div class="col-sm-4">
+            <h2>Sobre</h2>
+            <h5>Sobre o Para Cinéfilos Secretos</h5>
+            <p> Somos uma plataforma para compartilhar avaliações e informações sobre filmes, atores e diretores</p>
+            <h3 class="mt-4"> Descubra </h3>
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" id="n1" href="{% url 'filmes-disponiveis' %}" onmouseover="marcar(this.id)" onmouseout="marcar(this.id)">Filmes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="n1" href="{% url 'atores-listados' %}" onmouseover="marcar(this.id)" onmouseout="marcar(this.id)">Atores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="n2" href="{% url 'diretores-listados' %}" onmouseover="marcar(this.id)" onmouseout="marcar(this.id)">Diretores</a>
+                </li>
+            </ul>				
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+{% endblock %}

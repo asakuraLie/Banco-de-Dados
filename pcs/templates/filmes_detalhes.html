@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ filme.slug }}{% endblock %}
+
+{% block content %}
+
+<br/>
+<h1>{{ filme.nome_filme }}</h1>
+<small>Diretor(es): 
+    {% for diretor in filme.diretores.all %}
+        {{ diretor.nome_diretor }}
+    {% endfor %} </small> <br/>
+<small>Ator(es)/Atriz(es): 
+    {% for ator in filme.atores.all %}
+        {{ ator.nome_ator }},
+    {% endfor %}</small> <br/>
+<small>Gênero(s): {{ filme.genero }}</small><br/>
+<small>Onde assistir: {{ filme.media }}</small><br/>
+<hr>
+<h6>Sinopse</h6>
+{{ filme.sinopse }}
+
+<br/><br/>
+<a href="{% url 'filmes-disponiveis' %}" class="btn btn-secondary" >Lista de Filmes</a>
+<a href="{% url 'avaliacao-por-filme' filme.nome_filme %}" class="btn btn-secondary">Avaliações do filme</a>
+<a href="{% url 'filmes-editar' filme.nome_filme %}" class="btn btn-secondary">Editar informações do filme</a>
+<a href="{% url 'filmes-excluir' filme.nome_filme %}" class="btn btn-secondary">Excluir filme</a>
+{% endblock %}

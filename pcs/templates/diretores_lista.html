@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br/>
+<h1>Diretores Listados</h1>
+<hr>
+<ul class="list-group">
+{% for diretor in object_list %}
+    <li class="list-group-item"><a href="{% url 'diretores-detalhes' diretor.pk %}" type="button" class="btn btn-secondary">{{ diretor.nome_diretor }}</a><br/>
+        <hr>
+        <h6>Sobre a estrela</h6>{{ diretor.infos_diretor | slice:":400" }}...
+    </li>
+    <br/>
+{% endfor %}
+</ul>
+
+<br/>
+<a href="{% url 'home' %}" class="btn btn-secondary" >Voltar</a>
+<a href="{% url 'adc_diretor' %}" class="btn btn-secondary" >Adicionar Diretor/Diretora</a>
+
+{% endblock %}

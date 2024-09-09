@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Adicionar diretor/diretora ao Site{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h1>Adicionar Diretor/Diretora</h1>
+<br/><br/>
+<div class="mb-3">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary">Postar</button>
+</div>
+
+{% else %}
+
+Você precisa estar loggado para fazer isso :)
+
+{% endif %}
+
+
+{% endblock %}

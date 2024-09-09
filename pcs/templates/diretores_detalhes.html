@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ diretor.slug }}{% endblock %}
+
+{% block content %}
+
+<br/>
+
+<h1>{{ diretor.nome_diretor }}</h1>
+Nascimento: {{ diretor.nascimento_diretor }}
+<hr>
+Informações: {{ diretor.infos_diretor }}
+<hr>
+<h3>Filmes dirigidos:</h3>
+<ul class="list-group">
+{% for filme in diretor.filme_dirigido.all %}
+    <li class="list-group-item"><a href="{% url 'filmes-detalhes' filme.pk %}" class="btn btn-secondary">{{ filme.nome_filme }}</a></li>
+{% endfor %}
+</ul>
+
+<br/><br/>
+<a href="{% url 'diretores-listados' %}" class="btn btn-secondary" >Voltar</a>
+<a href="{% url 'diretores-editar' diretor.nome_diretor %}" class="btn btn-secondary">Editar informações do diretor</a>
+<a href="{% url 'diretores-excluir' diretor.nome_diretor %}" class="btn btn-secondary">Excluir diretor</a>
+
+{% endblock %}

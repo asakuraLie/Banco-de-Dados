@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Adicionar Filme{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<br/>
+
+<h1>Adicionar Filme</h1>
+<br/>
+
+<div class="mb-3">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary">Postar</button>
+</div>
+
+{% else %}
+
+Você precisa estar loggado para fazer isso :)
+
+{% endif %}
+
+
+{% endblock %}

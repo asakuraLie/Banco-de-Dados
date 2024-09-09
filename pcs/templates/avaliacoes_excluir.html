@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Excluir Avaliação{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+    <br/>
+    <h1>Excluir Avaliação</h1>
+    <br/>
+    <div class="mb-3">
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-secondary">Excluir</button>
+    </div>
+
+    {% else %}
+
+    Você não pode editar essa avaliação
+
+{% endif %}
+
+
+{% endblock %}

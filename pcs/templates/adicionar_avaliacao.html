@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Criar nova Avaliação{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<br/>
+<h1>Adicionar uma Avaliação</h1>
+<br/>
+<div class="mb-3">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary">Postar</button>
+</div>
+
+{% else %}
+
+Você precisa estar loggado para fazer isso :)
+
+{% endif %}
+
+
+{% endblock %}

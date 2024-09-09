@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br/>
+<h1>Atores/Atrizes Listados</h1>
+<hr>
+<ul class="list-group">
+{% for ator in object_list %}
+    <li class="list-group-item"><a href="{% url 'atores-detalhes' ator.pk %}" class="btn btn-secondary">{{ ator.nome_ator }}</a><br/>
+        <hr>
+        <h6>Sobre a estrela</h6>{{ ator.infos_ator | slice:":400" }}...
+    </li>
+    <br/>
+    {% endfor %}
+</ul>
+
+<br/>
+<a href="{% url 'home' %}" class="btn btn-secondary" >Voltar</a>
+<a href="{% url 'adc_ator' %}" class="btn btn-secondary" >Adicionar Ator/Atriz</a>
+
+{% endblock %}

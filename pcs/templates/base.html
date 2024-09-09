@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<style>
+				.bg-AzulClaro{
+					background-color: #ddd;
+				}
+				.bg-AzulEscuro{
+					background-color: #046;
+				}
+		</style>
+    <title>PCS - Para Cinéfilos Secretos</title>
+  </head>
+  <body>
+			<header class="p-3 bg-primary text-white d-flex justify-content-start">
+				<div class="text-center">
+          {% load static %}
+          <img src="{% static 'imagens/logo.png' %}" class="rounded">
+        </div>
+				<h3 class="m-auto align-self-center"> Para Cinéfilos Secretos </h3>
+			</header>
+			<nav class="navbar navbar-expand-sm navbar-dark bg-AzulEscuro">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#"
+                    id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Avaliações</a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                      <li><a class="dropdown-item" href="{% url 'avaliacoes-lista' %}">Todas as avaliações</a></li>
+                      <li><a class="dropdown-item" href="{% url 'adc_avaliacao' %}">Fazer avaliação</a></li>
+                    </ul>
+                  </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#"
+                    id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Favoritos</a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                      <li><a class="dropdown-item" href="{% url 'lista-favoritos' %}">Todas Lista de Favoritos</a></li>
+                      <li><a class="dropdown-item" href="{% url 'adc_favorito' %}">Criar Lista de Favoritos</a></li>
+                    </ul>
+                  </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href=""
+                    id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Filmes</a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                      <li><a class="dropdown-item" href="{% url 'filmes-disponiveis' %}">Ver lista de filmes</a></li>
+                      <li><a class="dropdown-item" href="{% url 'adc_filme' %}">Adicionar novo filme</a></li>
+                    </ul>
+                  </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href=""
+                    id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Atores</a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                      <li><a class="dropdown-item" href="{% url 'atores-listados' %}">Ver lista de atores</a></li>
+                      <li><a class="dropdown-item" href="{% url 'adc_ator' %}">Adicionar ator/atriz</a></li>
+                    </ul>
+                  </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href=""
+                    id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Diretores</a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                      <li><a class="dropdown-item" href="{% url 'diretores-listados' %}">Ver lista de diretores</a></li>
+                      <li><a class="dropdown-item" href="{% url 'adc_diretor' %}">Adicionar Diretores</a></li>
+                    </ul>
+                  </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#"
+                    id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Meu Perfil</a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                      <li><a class="dropdown-item" href="{% url 'criar-usuario' %}">Ver e Editar perfil</a></li>
+                      <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Editar meu usuario</a></li>
+                      <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
+                  </ul>
+                </li>
+              {% else %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#"
+                    id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Meu Perfil</a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                      <li><a class="dropdown-item" href="{% url 'register' %}">Registrar</a></li>
+                      <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                  </ul>
+                </li>
+              {% endif %}
+              
+            </div>
+          </div>
+        </div>
+      </nav>
+
+			<div class="container">
+				{% block content %}
+			
+				{% endblock %}
+
+        
+			</div>
+
+		<!-- Footer -->
+<footer class="bg-light text-center ">
+  <!-- Grid container -->
+  <div class="container p-4">
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2022 Copyright:
+    <a class="text-dark" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Lie e Contente</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+			<script>
+				const marcar=(obj)=>{
+					document.getElementbyId(obj).classList.toggle("active");
+				}
+			</script>
+  </body>
+</html>

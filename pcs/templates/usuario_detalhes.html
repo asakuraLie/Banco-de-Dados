@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ diretor.slug }}{% endblock %}
+
+{% block content %}
+
+<br/>
+
+<h1>{{ usuario.nickname }}</h1>
+Nascimento: {{ usuario.nascimento_usuario }}
+<hr>
+
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-secondary" >Home</a>
+<a href="{% url 'criar-usuario' %}" class="btn btn-secondary">Definir ou Editar Informações</a>
+
+{% endblock %}

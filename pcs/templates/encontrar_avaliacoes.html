@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br/>
+
+<h1>Avaliações</h1>
+
+<ul>
+{% for avaliacao in object_list %}
+    <li><a href="{% url 'avaliacoes-detalhes' avaliacao.pk %}">{{ avaliacao.titulo }}</a> - {{ avaliacao.avaliador }}<br/>
+        {{ avaliacao.comentario | slice:":150" }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'home' %}" class="btn btn-secondary" >Voltar</a>
+<a href="{% url 'adc_avaliacao' %}" class="btn btn-secondary" >Adicionar Avaliação</a>
+
+{% endblock %}

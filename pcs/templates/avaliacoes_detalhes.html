@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ avaliacao.slug }}{% endblock %}
+
+{% block content %}
+
+<br/>
+
+<h1>{{ avaliacao.titulo }}</h1>
+<small>Avaliação do Filme: {{ avaliacao.filme_avaliado }}</small><br/>
+<small>Nota: {{ avaliacao.nota }}</small><br/>
+<small>By: {{ avaliacao.avaliador }}</small><br/>
+<hr>
+{{ avaliacao.comentario }}
+
+<br/><br/>
+<a href="{% url 'avaliacoes-lista' %}" class="btn btn-secondary" >Lista de Avaliações</a>
+<a href="{% url 'avaliacao-por-usuario' avaliacao.avaliador.id %}" class="btn btn-secondary">Avaliações do usuario</a>
+<a href="{% url 'avaliacoes-editar' avaliacao.pk %}" class="btn btn-secondary">Editar avaliação</a>
+<a href="{% url 'avaliacoes-excluir' avaliacao.pk %}" class="btn btn-secondary">Excluir avaliação</a>
+
+{% endblock %}

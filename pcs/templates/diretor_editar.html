@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Informações sobre Diretor/Diretora{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<br/>
+<h1>Editar Informações</h1>
+<br/><br/>
+<div class="mb-3">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary">Salvar Alterações</button>
+</div>
+
+{% else %}
+
+Você precisa estar loggado para fazer isso :)
+
+{% endif %}
+
+
+{% endblock %}

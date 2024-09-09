@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br/>
+
+<h1>Filmes Listados</h1>
+
+<hr>
+
+<ul class="list-group">
+{% for filme in object_list %}
+    <li class="list-group-item"><a type="button" class="btn btn-secondary" href="{% url 'filmes-detalhes' filme.pk %}">{{ filme.nome_filme }}</a><br/>
+        <hr>
+        <h6>Sinopse</h6>{{ filme.sinopse | slice:":200" }}...</li>
+    <br/>
+{% endfor %}
+</ul>
+
+<br/>
+<a href="{% url 'home' %}" class="btn btn-secondary" >Voltar</a>
+<a href="{% url 'adc_filme' %}" class="btn btn-secondary" >Adicionar Filme</a>
+{% endblock %}
+
+<br/>

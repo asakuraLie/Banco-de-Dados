@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Favoritos{% endblock %}
+
+{% block content %}
+
+<br/>
+
+<h1> Todas as listas de favoritos </h1>
+
+<hr>
+
+<ul class="list-group">
+    {% for favoritos in object_list %}
+    <li class="list-group-item">
+        <h3>Favoritos de {{ favoritos.dono_lista.nickname }}</h3>
+        <hr>
+        <ul class="list-group">
+        {% for filme in favoritos.filme_na_lista.all %}
+            <li class="list-group-item"><a type="button" class="btn btn-secondary" href="{% url 'filmes-detalhes' filme.pk %}">{{ filme.nome_filme }}</a>
+            </li>
+        {% endfor %}
+        <br/>
+        <a href="{% url 'editar-favoritos' favoritos.pk %}" class="btn btn-outline-secondary" >Editar lista de favoritos</a>
+        </ul>
+    </li>
+    <br/>
+    {% endfor %}
+</ul>
+
+<br/><br/>
+
+{% endblock %}

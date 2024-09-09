@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Adicionar Filme Favorito{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<br/>
+
+<h1>Adicionar Favorito</h1>
+<br/>
+<div class="mb-3">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary">Adicionar</button>
+</div>
+{% else %}
+
+Você precisa estar loggado para fazer isso :)
+
+{% endif %}
+
+
+{% endblock %}

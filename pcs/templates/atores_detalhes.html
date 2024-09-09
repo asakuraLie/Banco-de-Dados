@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ ator.slug }}{% endblock %}
+
+{% block content %}
+
+<br/>
+<h1>{{ ator.nome_ator }}</h1>
+Nascimento: {{ ator.nascimento_ator }}
+<br/>
+<hr>
+Informações: {{ ator.infos_ator }}
+<hr>
+<h5>Filmes feitos:</h5>
+<ul class="list-group">
+{% for filme in ator.filme_feito.all %}
+    <li class="list-group-item"><a href="{% url 'filmes-detalhes' filme.pk %}" class="btn btn-secondary">{{ filme.nome_filme }}</a></li>
+{% endfor %}
+</ul>
+<br/><br/>
+<a href="{% url 'atores-listados' %}" class="btn btn-secondary" >Voltar</a>
+<a href="{% url 'atores-editar' ator.nome_ator %}" class="btn btn-secondary">Editar informações do ator</a>
+<a href="{% url 'atores-excluir' ator.nome_ator %}" class="btn btn-secondary">Excluir ator</a>
+
+{% endblock %}
